@@ -11,11 +11,17 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/protected").authenticated()
-                .anyRequest().permitAll()
-                .and()
+                .oauth2Login(oauth -> oauth
+                        .loginPage("/")
+                        )
+                .sessionManagement(session -> session
+                        .maximumSessions(1)
+                        .maxSessionsPreventsLogin(true)
+                        .expiredUrl("/expired"))
+
+
+
+
                 .oauth2Login();
 
         return http.build();
