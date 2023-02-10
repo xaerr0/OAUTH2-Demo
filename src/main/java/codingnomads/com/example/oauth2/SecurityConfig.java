@@ -7,7 +7,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SecurityConfig {
-
+//TODO Tried to login with Twitch. Halp?
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
