@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class testController {
 
     @GetMapping("/")
-    public String getIndexPage(Authentication authentication) {
+    public String homePage(Authentication authentication) {
         if (authentication != null) {
             System.out.println(authentication);
         }
@@ -16,10 +16,26 @@ public class testController {
     }
 
     @GetMapping("/protected")
-    public String getProtectedPage(Authentication authentication) {
+    public String protectedPage(Authentication authentication) {
         if (authentication != null) {
             System.out.println(authentication);
         }
         return "/index";
+    }
+
+    @GetMapping("/error")
+    public String errorPage(Authentication authentication) {
+        if (authentication != null) {
+            System.out.println(authentication);
+        }
+        return "/error";
+    }
+
+    @GetMapping("/expired")
+    public String expiredPage(Authentication authentication) {
+        if (authentication != null) {
+            System.out.println(authentication);
+        }
+        return "/expired";
     }
 }

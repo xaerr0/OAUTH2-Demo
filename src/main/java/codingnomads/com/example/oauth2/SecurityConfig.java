@@ -8,6 +8,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
 //TODO Tried to login with Twitch. Halp?
+    //TODO Finish filterChain
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -18,10 +19,6 @@ public class SecurityConfig {
                         .maximumSessions(1)
                         .maxSessionsPreventsLogin(true)
                         .expiredUrl("/expired"))
-
-
-
-
                 .oauth2Login();
 
         return http.build();
